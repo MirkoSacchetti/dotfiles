@@ -107,7 +107,6 @@ bindsym $super+m exec sh ~/Documents/scripts/screens.sh
 bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-bindsym  ppexec sh /home/m/Documents/script/screens.sh# DPI
 
 # Touchpad config
 exec --no-startup-id xinput set-prop "$touchpad" "libinput Tapping Enabled" 1
