@@ -1,1 +1,1 @@
-/home/m/.xinitrc
+[[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
