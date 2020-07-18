@@ -9,9 +9,11 @@ source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
 NPM_PACKAGES="${HOME}/.npm-packages"
+GEM_PATH="${HOME}/.gem/ruby/2.7.0"
 FLUTTER="/opt/flutter"
 export PATH="$PATH:$NPM_PACKAGES/bin"
 export PATH="$PATH:$FLUTTER/bin"
+export PATH="$PATH:$GEM_PATH/bin"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 
 alias nvmsource="source ~/.nvm/nvm.sh"

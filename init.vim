@@ -31,6 +31,7 @@ set incsearch
 set nohlsearch 
 set linebreak
 set cursorline
+set clipboard^=unnamed,unnamedplus
 let mapleader=";"
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
@@ -66,7 +67,6 @@ nmap <leader>gr <Plug>(coc-references)
 
 " Plugins mapping
 map <C-e> :NERDTreeToggle<CR>
-nmap <C-F>f <Plug>CtrlSFPrompt
 
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
