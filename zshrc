@@ -30,18 +30,18 @@ alias rn="cd ~/Documents/random_notes"
 alias wn="cd ~/Code/WiNet"
 alias dl="cd ~/Downloads"
 
-alias makenewpassword="head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo ''"
+alias m_makenewpassword="head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo ''"
 
-killmyport() {
+m_killmyport() {
   sudo fuser -k -n tcp $1
 }
 
-downloadyoutubeaudio (){
+m_downloadyoutubeaudio (){
   cd ~/Documents/synthMusic         
   youtube-dl -f 'bestaudio[ext=m4a]' $1
 }
 
-listenyoutubeaudio() {
+m_listenyoutubeaudio() {
   mpv $1 --no-video
 }
 
