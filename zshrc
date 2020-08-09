@@ -20,6 +20,7 @@ alias nvmsource="source ~/.nvm/nvm.sh"
 alias nvimconfig="nvim ~/.config/nvim/init.vim"
 alias i3config="nvim ~/.config/i3/config"
 alias zshconfig="nvim ~/.zshrc"
+alias xresourceseconfig="nvim ~/.Xresources"
 alias jn="jupyter notebook"
 alias open="xdg-open"
 alias vim="nvim"
@@ -46,8 +47,9 @@ m_listenyoutubeaudio() {
 }
 
 qn(){
-  if [[ $1 ]]
-  then
+  if [[ $1 = '-l' ]]; then
+    ls -l ~/Documents/notes
+  elif [[ $1 ]]; then
     nvim ~/Documents/notes/$1
   else
     nvim ~/Documents/notes/random_note_$(date +'%Y_%m_%d__%H_%M')

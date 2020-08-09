@@ -1,11 +1,12 @@
 call plug#begin('~/.vim/plugged')
-Plug 'junegunn/goyo.vim'
 Plug '/usr/local/opt/fzf'
+Plug 'preservim/nerdtree'
+Plug 'preservim/nerdcommenter'
+Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'pangloss/vim-javascript'
-Plug 'preservim/nerdtree'
 Plug 'davidhalter/jedi-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
