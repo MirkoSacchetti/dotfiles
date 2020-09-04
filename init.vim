@@ -39,9 +39,10 @@ let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.pyc$']
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_mruf_relative=1
+let g:ctrlp_user_command = ['.git', 'node_modules']
 
 " KISS navigation
 inoremap kj <esc>:w<cr>
@@ -54,21 +55,17 @@ imap <C-BS> <C-W>
 noremap! <C-BS> <C-w>
 noremap! <C-h> <C-w>
 
-" Buffers selection
-map <leader>b :CtrlPBuffer<CR>
-map <leader>h :CtrlPMRU<CR>
-
-" Close buffer
 map <leader>d :bd<cr>
 
-"Open & Source this Configuration
 map <leader>sc :source ~/.config/nvim/init.vim<CR> 
 map <leader>oc :e ~/.config/nvim/init.vim<CR>
-nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gr <Plug>(coc-references)
 
 " Plugins mapping
 map <C-e> :NERDTreeToggle<CR>
+map <leader>b :CtrlPBuffer<CR>
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gr <Plug>(coc-references)
+map <C-p> :CrtlPMRU<CR>
 
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort

@@ -3,6 +3,7 @@ ZSH_THEME="robbyrussell"
 plugins=(
   fzf
   git
+  sublime
 )
 source $ZSH/oh-my-zsh.sh
 source /usr/share/fzf/key-bindings.zsh
@@ -18,26 +19,29 @@ export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 
 alias nvmsource="source ~/.nvm/nvm.sh"
 alias nvimconfig="nvim ~/.config/nvim/init.vim"
+alias xresourceseconfig="nvim ~/.Xresources"
 alias i3config="nvim ~/.config/i3/config"
 alias zshconfig="nvim ~/.zshrc"
-alias xresourceseconfig="nvim ~/.Xresources"
 alias jn="jupyter notebook"
 alias open="xdg-open"
 alias vim="nvim"
 alias vi="nvim"
 alias ms="cd ~/Documents/mirko_sacchetti"
-alias myscript="cd ~/Documents/script"
-alias rn="cd ~/Documents/random_notes"
 alias wn="cd ~/Code/WiNet"
-alias dl="cd ~/Downloads"
 
-alias m_makenewpassword="head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo ''"
+m_makenewpassword (){
+  if [ -z "$1" ]; then
+    head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13; echo ''
+  else
+    head /dev/urandom | tr -dc A-Za-z0-9 | head -c $1; echo ''
+  fi
+}
 
-m_killmyport() {
+m_killmyport(){
   sudo fuser -k -n tcp $1
 }
 
-m_downloadyoutubeaudio (){
+m_downloadyoutubeaudio(){
   cd ~/Documents/synthMusic         
   youtube-dl -f 'bestaudio[ext=m4a]' $1
 }

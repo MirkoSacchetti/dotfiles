@@ -42,7 +42,7 @@ rofi.fixed-num-lines: true
 
 URxvt*buffered: true
 URxvt*cursorBlink: true
-URxvt*font: xft:Operator Mono:size=12:antialias=true
+URxvt*font: xft:Operator Mono:size=12:antialias=true,xft:Noto Color Emoji
 URxvt*depth: 32
 URxvt*borderless: 1
 URxvt*scrollBar: false

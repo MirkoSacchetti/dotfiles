@@ -6,18 +6,18 @@ focus_follows_mouse no
 floating_modifier $super
 
 exec --no-startup-id compton -b
+exec --no-startup-id i3-battery-popup -n
 exec_always --no-startup-id autorandr --change
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secret
 exec --no-startup-id redshift
-exec_always --no-startup-id feh --bg-scale /home/m/Pictures/Nighthawks_by_Edward_Hopper_1942.jpg
 
 # launchers
-bindsym $super+r exec urxvt -e ranger -r ~/.config/ranger
+bindsym $mod+Return exec i3-sensible-terminal
 bindsym $super+p exec scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/' && notify-send "Screenshot taken!"
+bindsym $super+m exec autorandr --change 
 
 # i3
 bindsym $mod+Control+q kill
-bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+v split v
 bindsym $mod+h split h
 bindsym $mod+Shift+r restart
@@ -64,12 +64,9 @@ bindsym $super+Shift+0 move container to workspace 10
 
 # window rules, you can find the window class using xprop
 assign [class=Google-chrome*] 3
-assign [class=chromium] 1
 assign [class=Mailspring] 7
-assign [class=org.gnome.Nautilus] 4
 for_window [class=Pavucontrol|Gnome-calculator] floating enable
 for_window [class="Spotify"] move to workspace 6
-for_window [class="ranger"] move to workspace 4
 
 # i3 style 
 default_border pixel 0
@@ -78,13 +75,6 @@ hide_edge_borders smart_no_gaps
 gaps inner 0
 gaps outer 0
 font pango:Operator Mono 12
-# class                 border  backgr. text    indicator child_border
-client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
-client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-client.background       #ffffff
 
 # PulseAudio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
