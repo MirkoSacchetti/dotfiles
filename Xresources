@@ -1,3 +1,5 @@
+*font: xft:Fira Code:size=12:antialias=true,xft:Noto Color Emoji
+
 *background: #282828
 *foreground: #ebdbb2
 *color0:  #282828
@@ -42,7 +44,6 @@ rofi.fixed-num-lines: true
 
 URxvt*buffered: true
 URxvt*cursorBlink: true
-URxvt*font: xft:Operator Mono:size=12:antialias=true,xft:Noto Color Emoji
 URxvt*depth: 32
 URxvt*borderless: 1
 URxvt*scrollBar: false
@@ -50,7 +51,7 @@ URxvt*loginShell: true
 URxvt*saveLines: 5000
 URxvt.lineSpace: 14
 URxvt.letterSpace: 1 
-URxvt.internalBorder: 14
+!URxvt.internalBorder: 14
 URxvt.perl-ext-common: default,matcher
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1

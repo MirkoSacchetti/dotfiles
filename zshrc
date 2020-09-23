@@ -9,6 +9,7 @@ source $ZSH/oh-my-zsh.sh
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
+TERM=xterm-256color
 NPM_PACKAGES="${HOME}/.npm-packages"
 GEM_PATH="${HOME}/.gem/ruby/2.7.0"
 FLUTTER="/opt/flutter"
@@ -28,7 +29,6 @@ alias vim="nvim"
 alias vi="nvim"
 alias ms="cd ~/Documents/mirko_sacchetti"
 alias wn="cd ~/Code/WiNet"
-
 m_makenewpassword (){
   if [ -z "$1" ]; then
     head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13; echo ''

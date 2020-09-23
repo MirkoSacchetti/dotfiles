@@ -5,11 +5,15 @@ set $mod Mod4
 focus_follows_mouse no
 floating_modifier $super
 
-exec --no-startup-id compton -b
-exec --no-startup-id i3-battery-popup -n
-exec_always --no-startup-id autorandr --change
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secret
+exec --no-startup-id i3-battery-popup -n
+exec --no-startup-id autorandr --change
+exec --no-startup-id volumeicon
 exec --no-startup-id redshift
+exec --no-startup-id picon -b
+exec --no-startup-id clipit
+
+
 
 # launchers
 bindsym $mod+Return exec i3-sensible-terminal
@@ -74,7 +78,7 @@ default_floating_border pixel
 hide_edge_borders smart_no_gaps 
 gaps inner 0
 gaps outer 0
-font pango:Operator Mono 12
+font pango:Fira Code 12
 
 # PulseAudio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
@@ -110,7 +114,7 @@ bindsym Ctrl+space exec rofi -lines 8 \
   -kb-remove-char-back "BackSpace"\
   -kb-row-select "Tab"\
   -kb-row-tab "" \
-  -font 'Operator Mono 22'\
+  -font 'Fira Code 22'\
   -combi-modi "window#drun" \
   -modi "window" \
   -show combi 
