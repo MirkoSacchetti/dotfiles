@@ -51,7 +51,7 @@ URxvt*loginShell: true
 URxvt*saveLines: 5000
 URxvt.lineSpace: 14
 URxvt.letterSpace: 1 
-!URxvt.internalBorder: 14
+URxvt.internalBorder: 14
 URxvt.perl-ext-common: default,matcher
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
