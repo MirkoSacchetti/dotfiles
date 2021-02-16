@@ -25,8 +25,7 @@ Xft.hintstyle: hintsfull
 Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
-Xft.dpi: 192 
-!Xft.dpi: 96 
+Xft.dpi: 141 
 
 rofi.modi: run,drun,window
 rofi.color-enabled: true
