@@ -1,32 +1,35 @@
+export LANG=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+export PATH="/opt/homebrew/bin":$PATH
+export PATH="$PATH:/Users/m/Library/flutter/bin"
 export ZSH="/Users/m/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
-plugins=(
-  fzf
-  git
-  deno
-  sublime
-)
+DISABLE_AUTO_TITLE="true"
+plugins=(sublime git fzf)
 source $ZSH/oh-my-zsh.sh
-NPM_PACKAGES="${HOME}/.npm-packages"
-GEM_PATH="${HOME}/.gem/ruby/2.7.0"
-FLUTTER="/opt/flutter"
-export PATH="$PATH:$NPM_PACKAGES/bin"
-export PATH="$PATH:$FLUTTER/bin"
-export PATH="$PATH:$GEM_PATH/bin"
-export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
-export PATH="$PATH:/opt/homebrew/bin"
-alias sed="gsed"
-alias vim="nvim"
-alias vi="nvim"
-alias nvmsource="source ~/.nvm/nvm.sh"
+alias python="python3"
 alias nvimconfig="nvim ~/.config/nvim/init.vim"
 alias xresourceseconfig="nvim ~/.Xresources"
 alias i3config="nvim ~/.config/i3/config"
+alias ms="cd ~/Writing/MirkoSacchetti"
 alias zshconfig="nvim ~/.zshrc"
 alias jn="jupyter notebook"
-alias ms="cd ~/Writing/MirkoSacchetti"
 alias wn="cd ~/Code/WiNet"
-alias cdd="cd ~/Downloads"
+alias pr="cd ~/Projects"
+alias co="cd ~/Code"
+alias sed="gsed"
+alias vim="nvim"
+alias vi="nvim"
+
+qn(){
+  if [[ $1 = '-l' ]]; then
+    ls -l ~/Writing/notes
+  elif [[ $1 ]]; then
+    nvim ~/Writing/notes/$1
+  else
+    nvim ~/Writing/notes/random_note_$(date +'%Y_%m_%d__%H_%M')
+  fi
+}
 
 m_makenewpassword (){
   if [ -z "$1" ]; then
@@ -45,32 +48,29 @@ m_downloadyoutubeaudio(){
   youtube-dl -f 'bestaudio[ext=m4a]' $1
 }
 
+m_dstorefucker(){
+  defaults write com.apple.desktopservices DSDontWriteNetworkStores true
+  sudo find ~/ -name .DS_Store -depth -exec rm {} \;
+}
+
 m_listenyoutubeaudio() {
   mpv $1 --no-video
 }
 
-qn(){
-  if [[ $1 = '-l' ]]; then
-    ls -l ~/Documents/notes
-  elif [[ $1 ]]; then
-    nvim ~/Documents/notes/$1
-  else
-    nvim ~/Documents/notes/random_note_$(date +'%Y_%m_%d__%H_%M')
-  fi
-}
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
+m_condainit(){ 
+  # >>> conda initialize >>>
+  # !! Contents within this block are managed by 'conda init' !!
+  __conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+  if [ $? -eq 0 ]; then
     eval "$__conda_setup"
-else
+  else
     if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
-        . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
+      . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
     else
-        export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
+      export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
     fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+  fi
+  unset __conda_setup
+  # <<< conda initialize <<<
+}
 
