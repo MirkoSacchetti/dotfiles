@@ -5,10 +5,11 @@ export PATH="$PATH:/Users/m/Library/flutter/bin"
 export ZSH="/Users/m/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 DISABLE_AUTO_TITLE="true"
-plugins=(sublime git fzf)
+plugins=(git fzf)
 source $ZSH/oh-my-zsh.sh
 alias python="python3"
 alias nvimconfig="nvim ~/.config/nvim/init.vim"
+alias vimconfig="vim ~/.vimrc"
 alias xresourceseconfig="nvim ~/.Xresources"
 alias i3config="nvim ~/.config/i3/config"
 alias ms="cd ~/Writing/MirkoSacchetti"
@@ -18,10 +19,14 @@ alias wn="cd ~/Code/WiNet"
 alias pr="cd ~/Projects"
 alias co="cd ~/Code"
 alias sed="gsed"
-alias vim="nvim"
-alias vi="nvim"
+# alias vim="nvim"
+alias vi="vim"
 
-qn(){
+mtodo(){
+  nvim ~/Writing/notes/TODO
+}
+
+mqn(){
   if [[ $1 = '-l' ]]; then
     ls -l ~/Writing/notes
   elif [[ $1 ]]; then
@@ -31,7 +36,7 @@ qn(){
   fi
 }
 
-m_makenewpassword (){
+mpassword (){
   if [ -z "$1" ]; then
     head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13; echo ''
   else
@@ -39,25 +44,32 @@ m_makenewpassword (){
   fi
 }
 
-m_killmyport(){
+mkillport(){
   sudo fuser -k -n tcp $1
 }
 
-m_downloadyoutubeaudio(){
+mdownloadyoutubeaudio(){
   cd ~/Documents/synthMusic         
   youtube-dl -f 'bestaudio[ext=m4a]' $1
 }
 
-m_dstorefucker(){
+mdstorefucker(){
   defaults write com.apple.desktopservices DSDontWriteNetworkStores true
-  sudo find ~/ -name .DS_Store -depth -exec rm {} \;
+  sudo find ~/Code -name .DS_Store -depth -exec rm {} \;
+  sudo find ~/Projects -name .DS_Store -depth -exec rm {} \;
+  sudo find ~/Documents -name .DS_Store -depth -exec rm {} \;
+  sudo find ~/Writing -name .DS_Store -depth -exec rm {} \;
 }
 
-m_listenyoutubeaudio() {
+mlistenyoutubeaudio() {
   mpv $1 --no-video
 }
 
-m_condainit(){ 
+mnews() {
+  mpv https://live-hls-aje-ak.getaj.net/AJE/04.m3u8 &>/dev/null &
+}
+
+mcondainit(){ 
   # >>> conda initialize >>>
   # !! Contents within this block are managed by 'conda init' !!
   __conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -73,4 +85,3 @@ m_condainit(){
   unset __conda_setup
   # <<< conda initialize <<<
 }
-
