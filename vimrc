@@ -31,16 +31,14 @@ set nowritebackup
 set noswapfile
 set hidden
 set nohlsearch 
-set linebreak
 set cursorline
 set incsearch
 set smarttab
 set shiftwidth=2
 set softtabstop=2
 set cmdheight=2
-set tabstop=4
+set tabstop=2
 set lbr
-set tw=500
 set shortmess+=c
 set updatetime=300
 set laststatus=2
@@ -57,7 +55,6 @@ let g:lightline = {
       \   'gitbranch': 'FugitiveHead'
       \ },
       \ }
-
 let mapleader=";"
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
@@ -88,16 +85,7 @@ map <C-p> :CrtlPMRU<CR>
 map <leader>b :CtrlPBuffer<CR>
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gr <Plug>(coc-references)
-vmap <C-F>f <Plug>CtrlSFVwordPath
-vmap <C-F>F <Plug>CtrlSFVwordExec
-nmap <C-F>n <Plug>CtrlSFCwordPath
-nmap <C-F>f <Plug>CtrlSFPrompt
-nmap <C-F>p <Plug>CtrlSFPwordPath
-nnoremap <C-F>o :CtrlSFOpen<CR>
-nnoremap <C-F>t :CtrlSFToggle<CR>
-inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
-
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+nmap <leader>f :CocCommand prettier.formatFile<CR>
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -108,11 +96,17 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 else
-  inoremap <silent><expr> <c-@> coc#refresh()
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
+function! s:goyo_enter()
+  silent CocDisable
+endfunction
+function! s:goyo_leave()
+  silent CocEnable
+endfunction
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()

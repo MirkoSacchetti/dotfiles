@@ -2,10 +2,12 @@ export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export PATH="/opt/homebrew/bin":$PATH
 export PATH="$PATH:/Users/m/Library/flutter/bin"
+export PATH="$PATH:/Users/m/.local/bin"
+export PATH="$PATH:/opt/homebrew/Cellar/llvm/12.0.1/bin"
 export ZSH="/Users/m/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 DISABLE_AUTO_TITLE="true"
-plugins=(git fzf)
+plugins=(git sublime fzf)
 source $ZSH/oh-my-zsh.sh
 alias python="python3"
 alias nvimconfig="nvim ~/.config/nvim/init.vim"
@@ -22,11 +24,11 @@ alias sed="gsed"
 # alias vim="nvim"
 alias vi="vim"
 
-mtodo(){
+todo(){
   nvim ~/Writing/notes/TODO
 }
 
-mqn(){
+qn(){
   if [[ $1 = '-l' ]]; then
     ls -l ~/Writing/notes
   elif [[ $1 ]]; then
@@ -38,9 +40,9 @@ mqn(){
 
 mpassword (){
   if [ -z "$1" ]; then
-    head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13; echo ''
+     openssl rand -base64 7
   else
-    head /dev/urandom | tr -dc A-Za-z0-9 | head -c $1; echo ''
+    openssl rand -base64 $1
   fi
 }
 
@@ -54,11 +56,11 @@ mdownloadyoutubeaudio(){
 }
 
 mdstorefucker(){
-  defaults write com.apple.desktopservices DSDontWriteNetworkStores true
   sudo find ~/Code -name .DS_Store -depth -exec rm {} \;
   sudo find ~/Projects -name .DS_Store -depth -exec rm {} \;
   sudo find ~/Documents -name .DS_Store -depth -exec rm {} \;
   sudo find ~/Writing -name .DS_Store -depth -exec rm {} \;
+  defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 }
 
 mlistenyoutubeaudio() {
@@ -85,3 +87,6 @@ mcondainit(){
   unset __conda_setup
   # <<< conda initialize <<<
 }
+function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}
+#[ -f "/Users/m/.ghcup/env" ] && source "/Users/m/.ghcup/env" # ghcup-env
+[ -f "/Users/m/.ghcup/env" ] && source "/Users/m/.ghcup/env" # ghcup-env
