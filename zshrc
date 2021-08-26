@@ -25,20 +25,20 @@ alias sed="gsed"
 alias vi="vim"
 
 todo(){
-  nvim ~/Writing/notes/TODO
+  vim ~/Writing/notes/TODO
 }
 
 qn(){
   if [[ $1 = '-l' ]]; then
     ls -l ~/Writing/notes
   elif [[ $1 ]]; then
-    nvim ~/Writing/notes/$1
+    vim ~/Writing/notes/$1
   else
-    nvim ~/Writing/notes/random_note_$(date +'%Y_%m_%d__%H_%M')
+    vim ~/Writing/notes/random_note_$(date +'%Y_%m_%d__%H_%M')
   fi
 }
 
-mpassword (){
+passwordrandom (){
   if [ -z "$1" ]; then
      openssl rand -base64 7
   else
@@ -46,16 +46,16 @@ mpassword (){
   fi
 }
 
-mkillport(){
+killmyport(){
   sudo fuser -k -n tcp $1
 }
 
-mdownloadyoutubeaudio(){
+downloadyoutubeaudio(){
   cd ~/Documents/synthMusic         
   youtube-dl -f 'bestaudio[ext=m4a]' $1
 }
 
-mdstorefucker(){
+dsstorefucker(){
   sudo find ~/Code -name .DS_Store -depth -exec rm {} \;
   sudo find ~/Projects -name .DS_Store -depth -exec rm {} \;
   sudo find ~/Documents -name .DS_Store -depth -exec rm {} \;
@@ -63,17 +63,15 @@ mdstorefucker(){
   defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 }
 
-mlistenyoutubeaudio() {
+listenvideoaudio() {
   mpv $1 --no-video
 }
 
-mnews() {
+mynews() {
   mpv https://live-hls-aje-ak.getaj.net/AJE/04.m3u8 &>/dev/null &
 }
 
-mcondainit(){ 
-  # >>> conda initialize >>>
-  # !! Contents within this block are managed by 'conda init' !!
+condainit(){ 
   __conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
   if [ $? -eq 0 ]; then
     eval "$__conda_setup"
@@ -85,8 +83,12 @@ mcondainit(){
     fi
   fi
   unset __conda_setup
-  # <<< conda initialize <<<
 }
-function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}
-#[ -f "/Users/m/.ghcup/env" ] && source "/Users/m/.ghcup/env" # ghcup-env
+
+gitignore() { 
+  curl -sLw n https://www.toptal.com/developers/gitignore/api/$@
+}
+
+# learn You a Haskell for Great Good!
 [ -f "/Users/m/.ghcup/env" ] && source "/Users/m/.ghcup/env" # ghcup-env
+
