@@ -5,6 +5,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'arcticicestudio/nord-vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'posva/vim-vue'
 Plug 'pangloss/vim-javascript'
@@ -12,6 +13,7 @@ Plug 'morhetz/gruvbox'
 call plug#end()
 
 syntax enable
+colorscheme nord
 set encoding=utf-8
 set background=dark
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
