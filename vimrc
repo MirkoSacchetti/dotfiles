@@ -1,23 +1,19 @@
 call plug#begin('~/.vim/plugged')
-Plug '/opt/homebrew/bin/fzf'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dyng/ctrlsf.vim'
 Plug 'posva/vim-vue'
 Plug 'pangloss/vim-javascript'
-Plug 'itchyny/lightline.vim'
 Plug 'morhetz/gruvbox'
 call plug#end()
 
 syntax enable
 set encoding=utf-8
 set background=dark
-set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 colorscheme gruvbox
@@ -45,16 +41,7 @@ set laststatus=2
 set completeopt=longest,menuone
 set clipboard^=unnamed,unnamedplus
 set backspace=indent,eol,start
-let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead'
-      \ },
-      \ }
+
 let mapleader=";"
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
@@ -83,30 +70,3 @@ map <leader>sc :source ~/.vimrc<CR>
 map <C-e> :NERDTreeToggle<CR>
 map <C-p> :CrtlPMRU<CR>
 map <leader>b :CtrlPBuffer<CR>
-nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gr <Plug>(coc-references)
-nmap <leader>f :CocCommand prettier.formatFile<CR>
-
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
-
-function! s:goyo_enter()
-  silent CocDisable
-endfunction
-function! s:goyo_leave()
-  silent CocEnable
-endfunction
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
