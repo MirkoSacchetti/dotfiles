@@ -5,6 +5,8 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dyng/ctrlsf.vim'
@@ -86,6 +88,7 @@ map <leader>b :CtrlPBuffer<CR>
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gr <Plug>(coc-references)
 nmap <leader>f :CocCommand prettier.formatFile<CR>
+nmap <leader>qf  <Plug>(coc-fix-current)
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :

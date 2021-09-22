@@ -1,3 +1,5 @@
+DISABLE_AUTO_TITLE="true"
+ZSH_THEME="robbyrussell"
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export PATH="/opt/homebrew/bin":$PATH
@@ -5,8 +7,6 @@ export PATH="$PATH:/Users/m/Library/flutter/bin"
 export PATH="$PATH:/Users/m/.local/bin"
 export PATH="$PATH:/opt/homebrew/Cellar/llvm/12.0.1/bin"
 export ZSH="/Users/m/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
-DISABLE_AUTO_TITLE="true"
 plugins=(git sublime fzf)
 source $ZSH/oh-my-zsh.sh
 alias python="python3"
@@ -40,7 +40,7 @@ qn(){
 
 passwordrandom (){
   if [ -z "$1" ]; then
-     openssl rand -base64 7
+     openssl rand -base64 6
   else
     openssl rand -base64 $1
   fi
