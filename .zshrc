@@ -29,12 +29,12 @@ todo(){
 }
 
 qn(){
-  if [[ $1 = '-l' ]]; then
-    ls -l ~/Writing/notes
+  if [[ $1 = 'rand' ]]; then
+    vi ~/Writing/notes/rand_$(date +'%Y_%m_%d__%H_%M')
   elif [[ $1 ]]; then
-    vim ~/Writing/notes/$1
+    vi ~/Writing/notes/$1
   else
-    vim ~/Writing/notes/random_note_$(date +'%Y_%m_%d__%H_%M')
+    vi ~/Writing/notes
   fi
 }
 
@@ -52,7 +52,7 @@ killmyport(){
 
 downloadyoutubeaudio(){
   cd ~/Documents/synthMusic         
-  youtube-dl -f 'bestaudio[ext=m4a]' $1
+  youtube-dl --audio-quality 5 -v --extract-audio  --audio-format mp3 $1
 }
 
 dsstorefucker(){
