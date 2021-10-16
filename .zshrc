@@ -34,7 +34,7 @@ qn(){
   elif [[ $1 ]]; then
     vi ~/Writing/notes/$1
   else
-    vi ~/Writing/notes
+    vi -c "cd ~/Writing/notes"
   fi
 }
 
