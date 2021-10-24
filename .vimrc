@@ -30,14 +30,12 @@ set nohlsearch
 set cursorline
 set incsearch
 set smarttab
-set shiftwidth=2
-set softtabstop=2
-set cmdheight=2
-set tabstop=2
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 set lbr
 set shortmess+=c
 set updatetime=300
-set laststatus=2
 set completeopt=longest,menuone
 set clipboard^=unnamed,unnamedplus
 set backspace=indent,eol,start
