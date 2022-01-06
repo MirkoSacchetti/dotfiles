@@ -11,6 +11,7 @@ plugins=(git sublime fzf)
 source $ZSH/oh-my-zsh.sh
 alias python="python3"
 alias nvimconfig="nvim ~/.config/nvim/init.vim"
+alias mypi="ssh pi@192.168.2.8"
 alias vimconfig="vim ~/.vimrc"
 alias xresourceseconfig="nvim ~/.Xresources"
 alias i3config="nvim ~/.config/i3/config"
@@ -21,11 +22,14 @@ alias wn="cd ~/Code/WiNet"
 alias pr="cd ~/Projects"
 alias co="cd ~/Code"
 alias sed="gsed"
-# alias vim="nvim"
 alias vi="vim"
 
 todo(){
   vim ~/Writing/notes/TODO
+}
+
+todow(){
+  vim ~/Code/WiNet/TODO
 }
 
 qn(){

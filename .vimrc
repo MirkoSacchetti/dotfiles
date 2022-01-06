@@ -1,3 +1,4 @@
+set rtp+=/opt/homebrew/opt/fzf
 call plug#begin('~/.vim/plugged')
 Plug '/opt/homebrew/bin/fzf'
 Plug 'preservim/nerdtree'
@@ -16,13 +17,13 @@ Plug 'itchyny/lightline.vim'
 Plug 'morhetz/gruvbox'
 call plug#end()
 
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
+colorscheme gruvbox
 syntax enable
 set encoding=utf-8
 set background=dark
-set termguicolors
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-colorscheme gruvbox
 set expandtab
 set mouse=a
 set autoindent
