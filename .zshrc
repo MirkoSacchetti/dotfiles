@@ -1,5 +1,6 @@
 DISABLE_AUTO_TITLE="true"
 ZSH_THEME="robbyrussell"
+
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export PATH="/opt/homebrew/bin":$PATH
@@ -7,21 +8,21 @@ export PATH="$PATH:/Users/m/Library/flutter/bin"
 export PATH="$PATH:/Users/m/.local/bin"
 export PATH="$PATH:/opt/homebrew/Cellar/llvm/12.0.1/bin"
 export ZSH="/Users/m/.oh-my-zsh"
-plugins=(git sublime fzf)
+plugins=(git fzf)
 source $ZSH/oh-my-zsh.sh
-alias python="python3"
+
 alias nvimconfig="nvim ~/.config/nvim/init.vim"
-alias mypi="ssh pi@192.168.2.8"
+alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
-alias xresourceseconfig="nvim ~/.Xresources"
-alias i3config="nvim ~/.config/i3/config"
-alias ms="cd ~/Writing/MirkoSacchetti"
-alias zshconfig="nvim ~/.zshrc"
+alias python="python3"
+alias smerge='/Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/smerge'
+alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+alias mypi="ssh pi@192.168.2.8"
 alias jn="jupyter notebook"
 alias wn="cd ~/Code/WiNet"
 alias pr="cd ~/Projects"
-alias co="cd ~/Code"
 alias sed="gsed"
+alias ms="cd ~/Writing/MirkoSacchetti"
 alias vi="vim"
 
 todo(){
