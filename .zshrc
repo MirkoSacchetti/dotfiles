@@ -94,6 +94,9 @@ gitignore() {
   curl -sLw n https://www.toptal.com/developers/gitignore/api/$@
 }
 
+# This loads nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
 # learn You a Haskell for Great Good!
 [ -f "/Users/m/.ghcup/env" ] && source "/Users/m/.ghcup/env" # ghcup-env
 
