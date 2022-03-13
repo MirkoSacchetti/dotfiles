@@ -18,7 +18,7 @@ alias pr="cd ~/Projects"
 alias co="cd ~/Code"
 alias sed="gsed"
 # alias vim="nvim"
-alias vi="vim"
+alias vi="nvim"
 
 todo(){
   vim ~/Writing/notes/TODO
