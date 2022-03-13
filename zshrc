@@ -1,11 +1,14 @@
 DISABLE_AUTO_TITLE="true"
 ZSH_THEME="robbyrussell"
+NPM_PACKAGES="${HOME}/.npm-packages"
+
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export ZSH="/home/m/.oh-my-zsh"
+export PATH="$PATH:$NPM_PACKAGES/bin"
 plugins=(git sublime fzf)
 source $ZSH/oh-my-zsh.sh
-alias python="python3"
+
 alias nvimconfig="nvim ~/.config/nvim/init.vim"
 alias vimconfig="vim ~/.vimrc"
 alias xresourceseconfig="nvim ~/.Xresources"
@@ -15,9 +18,6 @@ alias zshconfig="nvim ~/.zshrc"
 alias jn="jupyter notebook"
 alias wn="cd ~/Code/WiNet"
 alias pr="cd ~/Projects"
-alias co="cd ~/Code"
-alias sed="gsed"
-# alias vim="nvim"
 alias vi="nvim"
 
 todo(){
