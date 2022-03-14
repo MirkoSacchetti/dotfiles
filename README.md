@@ -1,5 +1,5 @@
 # My dotfiles
-## Vim, Tmux, Zsh and not much else
+## (Neo)Vim, Tmux, Zsh and not much else
 
 “You should not have a favorite weapon, nor likes and dislikes. To become over-familiar with one weapon is as much a fault as not knowing it sufficiently well.”
 
