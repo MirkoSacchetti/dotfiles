@@ -2,6 +2,8 @@ call plug#begin('~/.vim/plugged')
 Plug '/opt/homebrew/bin/fzf'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'preservim/nerdtree'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-lualine/lualine.nvim'
@@ -11,7 +13,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dyng/ctrlsf.vim'
 Plug 'tomlion/vim-solidity'
-" Plug 'morhetz/gruvbox'
 Plug 'ayu-theme/ayu-vim'
 call plug#end()
 
@@ -22,32 +23,39 @@ set mouse=a
 set autoindent
 set ignorecase
 set nobackup
+set number
+set relativenumber
 set noswapfile
 set hidden
 set nohlsearch 
-set linebreak
 set cursorline
 set incsearch
 set smarttab
 set shiftwidth=2
 set softtabstop=2
+set scrolloff=8
+set signcolumn=yes
 set tabstop=4
+set updatetime=50
 set lbr
 set tw=500
 set cmdheight=2
 set completeopt=longest,menuone
 set clipboard^=unnamed,unnamedplus
 
-let mapleader=";"
+let mapleader=" "
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.pyc$']
 
+
+inoremap <C-c> <esc>
 " remove ms windows shit
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 nmap <leader>w :w!<cr>
 map <leader>d :bd<cr>
 map <leader>sc :source ~/.config/nvim/init.vim<CR> 
+map <leader>oc :e ~/.config/nvim/init.vim<CR> 
 " Plugins mapping
 map <C-e> :NERDTreeToggle<CR>
 nmap <leader>gd <Plug>(coc-definition)
@@ -77,5 +85,8 @@ endfunction
 
 lua << END
 require('lualine').setup()
+require('telescope').setup{  defaults = { file_ignore_patterns = { "node_modules" }} }
+require('telescope').load_extension('fzf')
+
 END
 

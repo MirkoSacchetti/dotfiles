@@ -23,7 +23,7 @@ alias wn="cd ~/Code/WiNet"
 alias pr="cd ~/Projects"
 alias sed="gsed"
 alias ms="cd ~/Writing/MirkoSacchetti"
-alias vi="vim"
+alias vi="nvim"
 
 todo(){
   vim ~/Writing/notes/TODO
