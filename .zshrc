@@ -11,9 +11,9 @@ export ZSH="/Users/m/.oh-my-zsh"
 plugins=(git fzf)
 source $ZSH/oh-my-zsh.sh
 
-alias nvimconfig="nvim ~/.config/nvim/init.vim"
-alias zshconfig="vim ~/.zshrc"
-alias vimconfig="vim ~/.vimrc"
+alias nvimconfig="nvim ~/.config/nvim"
+alias zshconfig="nvim ~/.zshrc"
+alias vimconfig="nvim ~/.vimrc"
 alias python="python3"
 alias smerge='/Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/smerge'
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
@@ -24,6 +24,7 @@ alias pr="cd ~/Projects"
 alias sed="gsed"
 alias ms="cd ~/Writing/MirkoSacchetti"
 alias vi="nvim"
+alias vim="nvim"
 
 todo(){
   vim ~/Writing/notes/TODO

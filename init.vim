@@ -1,92 +1,73 @@
 call plug#begin('~/.vim/plugged')
-Plug '/opt/homebrew/bin/fzf'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'preservim/nerdtree'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-commentary'
-Plug 'sheerun/vim-polyglot'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'dyng/ctrlsf.vim'
-Plug 'tomlion/vim-solidity'
-Plug 'ayu-theme/ayu-vim'
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-peekaboo'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'preservim/nerdtree'
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/cmp-vsnip'
+
+Plug 'sainnhe/everforest'
+Plug 'shatur/neovim-ayu'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
-colorscheme ayu
-set termguicolors
-set wildignore+=**/.git/*
-set mouse=a
-set autoindent
-set ignorecase
-set nobackup
-set number
-set relativenumber
-set noswapfile
-set hidden
-set nohlsearch 
-set cursorline
-set incsearch
-set smarttab
-set shiftwidth=2
-set softtabstop=2
-set scrolloff=8
-set signcolumn=yes
-set tabstop=4
-set updatetime=50
-set lbr
-set tw=500
-set cmdheight=2
-set completeopt=longest,menuone
+colorscheme ayu-mirage
 set clipboard^=unnamed,unnamedplus
 
+set cmdheight=2
+set completeopt=menu,menuone,noselect
+set cursorline
+set hidden
+set ignorecase
+set mouse=a
+set nobackup
+set nohlsearch 
+set noswapfile
+set number
+set relativenumber
+set scrolloff=8
+set shiftwidth=2
+set signcolumn=yes
+set softtabstop=2
+set tabstop=4
+set termguicolors
+set textwidth=0
+set wildignore+=**/.git/*
+
+let g:gruvbox_contrast_dark = 'soft'
 let mapleader=" "
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['\.pyc$']
-
-
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 inoremap <C-c> <esc>
-" remove ms windows shit
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-nmap <leader>w :w!<cr>
-map <leader>d :bd<cr>
-map <leader>sc :source ~/.config/nvim/init.vim<CR> 
-map <leader>oc :e ~/.config/nvim/init.vim<CR> 
-" Plugins mapping
-map <C-e> :NERDTreeToggle<CR>
-nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gr <Plug>(coc-references)
-" Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-" Using Lua functions
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+nmap <leader>sc :source ~/.config/nvim/init.vim<CR> 
+nmap <leader>oc :e ~/.config/nvim/init.vim<CR>
+nmap <leader>d :bd<CR>
+nmap <leader>n :bn<CR>
+nmap<leader>w :w!<CR>
+map <C-f> <cmd>NERDTreeFind<CR>
+map <C-e> <cmd>NERDTreeToggle<CR>
+nnoremap <leader>p <cmd>FZF<cr>
+nnoremap <leader>fg <cmd>Ag<cr>
+nnoremap <leader>fb <cmd>Buffers<cr>
+nnoremap <leader>fs <cmd>:GFiles?<cr>
+nnoremap <leader>fx <cmd>Commands<cr>
+nnoremap <leader>fr <cmd>Telescope registers<cr>
 
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+nnoremap <silent>K<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
+nnoremap <silent> gh :Lspsaga lsp_finder<CR>
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-lua << END
-require('lualine').setup()
-require('telescope').setup{  defaults = { file_ignore_patterns = { "node_modules" }} }
-require('telescope').load_extension('fzf')
-
-END
-
+lua require ('conf')
