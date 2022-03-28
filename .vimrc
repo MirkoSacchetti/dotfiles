@@ -5,6 +5,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'sbdchd/neoformat'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -45,6 +46,7 @@ set updatetime=100
 set laststatus=2
 set completeopt=longest,menuone
 set clipboard^=unnamed,unnamedplus
+set backspace=indent,eol,start
 
 let mapleader=";"
 let NERDTreeQuitOnOpen=1
@@ -52,32 +54,15 @@ let NERDTreeShowHidden=1
 
 nnoremap j gj
 nnoremap k gk
-imap jk <Esc>
-imap kj <Esc>
-"remove ms windows shit
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-nnoremap <leader>sc :source ~/.vimrc<CR> 
-nnoremap <leader>so :e ~/.vimrc<CR> 
-nnoremap <leader>w :w<cr>
+inoremap kj <Esc>
 map <leader>d :bd<cr>
-noremap <leader>q :q<cr>
-nnoremap <leader>s :w<cr>
-inoremap <leader>s <C-c>:w<cr>
-" FZF
+map <leader>w :w<cr>
+map <leader>e :NERDTreeFind<CR>
+map <C-e> :NERDTreeToggle<CR>
+nnoremap <leader>sc :source ~/.vimrc<CR>
+nnoremap <leader>so :e ~/.vimrc<CR>
 nnoremap <silent> <Leader>o :Files<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
-nnoremap <silent> <Leader>/ :BLines<CR>
-nnoremap <silent> <Leader>' :Marks<CR>
-nnoremap <silent> <Leader>g :Commits<CR>
-nnoremap <silent> <Leader>H :Helptags<CR>
-nnoremap <silent> <Leader>hh :History<CR>
-nnoremap <silent> <Leader>h: :History:<CR>
-nnoremap <silent> <Leader>h/ :History/<CR> 
-nnoremap <C-e> :NERDTreeToggle<CR>
-nnoremap <C-E> :NERDTreeFind<CR>
-nmap <leader>dd <Plug>(coc-definition)
-nmap <leader>dr <Plug>(coc-references)
-nmap <leader>df :CocCommand prettier.formatFile<CR>
 
 function! s:goyo_enter()
   silent CocDisable
