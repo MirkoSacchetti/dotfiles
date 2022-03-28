@@ -2,8 +2,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 Plug 'junegunn/vim-peekaboo'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'preservim/nerdtree'
@@ -60,12 +59,11 @@ nmap <leader>n :bn<CR>
 nmap<leader>w :w!<CR>
 map <C-f> <cmd>NERDTreeFind<CR>
 map <C-e> <cmd>NERDTreeToggle<CR>
-nnoremap <leader>p <cmd>FZF<cr>
-nnoremap <leader>fg <cmd>Ag<cr>
-nnoremap <leader>fb <cmd>Buffers<cr>
-nnoremap <leader>fs <cmd>:GFiles?<cr>
-nnoremap <leader>fx <cmd>Commands<cr>
-nnoremap <leader>fr <cmd>Telescope registers<cr>
+nnoremap <leader>p <cmd>lua require('fzf-lua').files()<CR>
+nnoremap <leader>fg <cmd>lua require('fzf-lua').grep()<CR>
+nnoremap <leader>fb <cmd>lua require('fzf-lua').buffers()<CR>
+nnoremap <leader>fx <cmd>lua require('fzf-lua').lsp_references()<CR>
+nnoremap <leader>fr <cmd>lua require('fzf-lua').registers()<CR>
 
 nnoremap <silent>K<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
 nnoremap <silent> gh :Lspsaga lsp_finder<CR>

@@ -53,11 +53,11 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 
 require('lualine').setup()
 require'lspconfig'.pyright.setup { capabilities = capabilities }
-require'lspconfig'.tsserver.setup { capabilities = capabilities }
-require'lspconfig'.vuels.setup{}
+require'lspconfig'.tsserver.setup {}
+require'lspconfig'.vuels.setup{ capabilities = capabilities }
 require'lspconfig'.emmet_ls.setup {
     capabilities = capabilities,
-    filetypes = { "html", "css", "typescriptreact", "javascriptreact" },
+    filetypes = { "html", "css", "vue", "typescriptreact", "javascriptreact" },
 }
 require'nvim-treesitter.configs'.setup {
   indent = {
