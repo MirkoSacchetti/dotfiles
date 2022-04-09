@@ -1,37 +1,51 @@
 DISABLE_AUTO_TITLE="true"
-NPM_PACKAGES="${HOME}/.npm-packages"
+ZSH_THEME="robbyrussell"
 
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
-export PATH="$PATH:$NPM_PACKAGES/bin"
+export PATH="/opt/homebrew/bin":$PATH
+export PATH="$PATH:/Users/m/Library/flutter/bin"
+export PATH="$PATH:/Users/m/.local/bin"
+export PATH="$PATH:/opt/homebrew/Cellar/llvm/12.0.1/bin"
 
-alias xresourceseconfig="nvim ~/.Xresources"
-alias i3config="nvim ~/.config/i3/config"
-alias ms="cd ~/Writing/MirkoSacchetti"
-alias zshconfig="nvim ~/.zshrc"
-alias open="xdg-open"
+export ZSH="/Users/m/.oh-my-zsh"
+plugins=(git fzf)
+source $ZSH/oh-my-zsh.sh
+
+alias nvimconfig="nvim ~/.config/nvim"
+alias zshconfig="vim ~/.zshrc"
+alias vimconfig="vim ~/.vimrc"
+alias python="python3"
+alias smerge='/Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/smerge'
+alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+alias mypi="ssh pi@192.168.2.8"
 alias jn="jupyter notebook"
 alias wn="cd ~/Code/WiNet"
 alias pr="cd ~/Projects"
-alias vi="nvim"
-
+alias sed="gsed"
+alias ms="cd ~/Writing/MirkoSacchetti"
+alias now="date -I seconds"
 todo(){
   vim ~/Writing/notes/TODO
 }
 
+todow(){
+  vim ~/Code/WiNet/TODO
+}
+
 qn(){
-  if [[ $1 = '-l' ]]; then
-    ls -l ~/Writing/notes
+  if [[ $1 = 'rand' ]]; then
+    vi ~/Writing/notes/rand_$(date +'%Y_%m_%d__%H_%M')
   elif [[ $1 ]]; then
-    vim ~/Writing/notes/$1
+    vi ~/Writing/notes/$1
   else
-    vim ~/Writing/notes/random_note_$(date +'%Y_%m_%d__%H_%M')
+    vi -c "cd ~/Writing/notes"
   fi
 }
 
-passwordrandom (){
+newpassword (){
   if [ -z "$1" ]; then
-     openssl rand -base64 6
+     openssl rand -base64 8
   else
     openssl rand -base64 $1
   fi
@@ -43,7 +57,7 @@ killmyport(){
 
 downloadyoutubeaudio(){
   cd ~/Documents/synthMusic         
-  youtube-dl -f 'bestaudio[ext=m4a]' $1
+  youtube-dl --audio-quality 5 -v --extract-audio  --audio-format mp3 $1
 }
 
 dsstorefucker(){
@@ -54,12 +68,8 @@ dsstorefucker(){
   defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 }
 
-listenvideoaudio() {
+listenvideo() {
   mpv $1 --no-video
-}
-
-watch(){
-  mpv --ytdl-format="[height <=? 720]" $1
 }
 
 aj() {
@@ -80,10 +90,13 @@ condainit(){
   unset __conda_setup
 }
 
-gitignore() { 
-  curl -sLw n https://www.toptal.com/developers/gitignore/api/$@
+nvmload(){
+# This loads nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
 }
 
+haskellload(){
 # learn You a Haskell for Great Good!
 [ -f "/Users/m/.ghcup/env" ] && source "/Users/m/.ghcup/env" # ghcup-env
-
+}
