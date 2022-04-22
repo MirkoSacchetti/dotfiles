@@ -54,26 +54,18 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 require('lualine').setup()
 require'lspconfig'.pyright.setup { capabilities = capabilities }
 require'lspconfig'.tsserver.setup {}
-require'lspconfig'.vuels.setup{ capabilities = capabilities }
+require'lspconfig'.vuels.setup{}
 require'lspconfig'.emmet_ls.setup {
     capabilities = capabilities,
-    filetypes = { "html", "css", "vue", "typescriptreact", "javascriptreact" },
+    filetypes = { "html", "css", "typescriptreact", "javascriptreact" },
 }
 require'nvim-treesitter.configs'.setup {
   indent = {
 	enable = true
   },
-  incremental_selection = {
-	enable = true,
-	keymaps = {
-	  init_selection = "gnn",
-	  node_incremental = "grn",
-	  scope_incremental = "grc",
-	  node_decremental = "grm",
-	},
-  },
   highlight = {
 	enable = true,
 	additional_vim_regex_highlighting = false,
-  },
+  }
 }
+

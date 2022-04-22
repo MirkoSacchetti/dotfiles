@@ -19,12 +19,14 @@ alias python="python3"
 alias smerge='/Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/smerge'
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 alias mypi="ssh pi@192.168.2.8"
+alias mypc="ssh 192.168.2.16"
 alias jn="jupyter notebook"
 alias wn="cd ~/Code/WiNet"
-alias pr="cd ~/Projects"
 alias sed="gsed"
 alias ms="cd ~/Writing/MirkoSacchetti"
 alias now="date -I seconds"
+alias vim=nvim
+
 todo(){
   vim ~/Writing/notes/TODO
 }
@@ -100,3 +102,5 @@ haskellload(){
 # learn You a Haskell for Great Good!
 [ -f "/Users/m/.ghcup/env" ] && source "/Users/m/.ghcup/env" # ghcup-env
 }
+
+source /Users/m/.config/broot/launcher/bash/br

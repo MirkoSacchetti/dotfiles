@@ -1,19 +1,16 @@
 call plug#begin('~/.vim/plugged')
+Plug 'dense-analysis/ale'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'sbdchd/neoformat'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'posva/vim-vue'
-Plug 'pangloss/vim-javascript'
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 call plug#end()
+
 let g:lightline = { 'colorscheme': 'gruvbox' }
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -23,6 +20,7 @@ syntax enable
 set encoding=utf-8
 set background=dark
 set expandtab
+set scrolloff=8
 set mouse=a
 set autoindent
 set number relativenumber

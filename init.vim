@@ -3,7 +3,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/goyo.vim'
 Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
-Plug 'junegunn/vim-peekaboo'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'preservim/nerdtree'
 
@@ -17,12 +16,11 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/cmp-vsnip'
 
-Plug 'sainnhe/everforest'
-Plug 'shatur/neovim-ayu'
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
+
 call plug#end()
 
-colorscheme ayu-mirage
+colorscheme gruvbox
 set clipboard^=unnamed,unnamedplus
 
 set cmdheight=2
@@ -45,23 +43,21 @@ set termguicolors
 set textwidth=0
 set wildignore+=**/.git/*
 
-let g:gruvbox_contrast_dark = 'soft'
-let mapleader=" "
+let mapleader=";"
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 inoremap <C-c> <esc>
+inoremap kj <Esc>
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-nmap <leader>sc :source ~/.config/nvim/init.vim<CR> 
-nmap <leader>oc :e ~/.config/nvim/init.vim<CR>
 nmap <leader>d :bd<CR>
 nmap <leader>n :bn<CR>
 nmap<leader>w :w!<CR>
 map <C-f> <cmd>NERDTreeFind<CR>
 map <C-e> <cmd>NERDTreeToggle<CR>
-nnoremap <leader>p <cmd>lua require('fzf-lua').files()<CR>
+nnoremap <leader>o <cmd>lua require('fzf-lua').files()<CR>
 nnoremap <leader>fg <cmd>lua require('fzf-lua').grep()<CR>
-nnoremap <leader>fb <cmd>lua require('fzf-lua').buffers()<CR>
+nnoremap <leader>b <cmd>lua require('fzf-lua').buffers()<CR>
 nnoremap <leader>fx <cmd>lua require('fzf-lua').lsp_references()<CR>
 nnoremap <leader>fr <cmd>lua require('fzf-lua').registers()<CR>
 
